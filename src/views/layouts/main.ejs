@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'Sistem Logistik' %></title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Basecoat -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.2/dist/basecoat.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- CSS khusus halaman (admin / pegawai) -->
+    <% if (typeof pageStyle !== 'undefined' && pageStyle) { %>
+        <link rel="stylesheet" href="/css/<%= pageStyle %>.css">
+    <% } %>
+</head>
+
+<body class="min-h-screen bg-gray-50 flex flex-col">
+
+    <!-- Navbar -->
+    <%- include('../partials/navbar') %>
+
+    <!-- Flash Message (jika ada) -->
+    <% if (typeof flash !== 'undefined' && flash) { %>
+        <%- include('../partials/flash') %>
+    <% } %>
+
+    <!-- Konten utama -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8">
+
+        <%- include('../' + view) %>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-500 text-center">
+            &copy; <%= new Date().getFullYear() %> Sistem Logistik FTI
+        </div>
+    </footer>
+
+</body>
+</html>

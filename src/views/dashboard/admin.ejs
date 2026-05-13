@@ -1,0 +1,178 @@
+<!-- Header Dashboard -->
+<div class="mb-8">
+
+    <h1 class="text-3xl font-bold text-gray-800">
+        Selamat datang, <%= user.nama %>
+    </h1>
+
+    <p class="text-gray-500 mt-1">
+        Anda login sebagai <span class="font-medium capitalize"><%= user.role %></span>.
+        Kelola data sistem logistik dari panel ini.
+    </p>
+
+</div>
+
+<!-- Kartu Statistik -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+    <!-- Kartu 1 -->
+    <div class="admin-card bg-white rounded-xl shadow-sm border p-6">
+
+        <div class="flex items-center justify-between mb-3">
+
+            <div class="text-sm text-gray-500 font-medium">
+                Total Pegawai
+            </div>
+
+            <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                👥
+            </div>
+
+        </div>
+
+        <div class="text-3xl font-bold text-gray-800">
+            12
+        </div>
+
+        <div class="text-xs text-gray-400 mt-1">
+            Data sementara
+        </div>
+
+    </div>
+
+    <!-- Kartu 2 -->
+    <div class="admin-card bg-white rounded-xl shadow-sm border p-6">
+
+        <div class="flex items-center justify-between mb-3">
+
+            <div class="text-sm text-gray-500 font-medium">
+                Total Barang
+            </div>
+
+            <div class="w-10 h-10 rounded-lg bg-green-100 text-green-600 flex items-center justify-center">
+                📦
+            </div>
+
+        </div>
+
+        <div class="text-3xl font-bold text-gray-800">
+            48
+        </div>
+
+        <div class="text-xs text-gray-400 mt-1">
+            Data sementara
+        </div>
+
+    </div>
+
+    <!-- Kartu 3 -->
+    <div class="admin-card bg-white rounded-xl shadow-sm border p-6">
+
+        <div class="flex items-center justify-between mb-3">
+
+            <div class="text-sm text-gray-500 font-medium">
+                Permintaan Aktif
+            </div>
+
+            <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center">
+                📋
+            </div>
+
+        </div>
+
+        <div class="text-3xl font-bold text-gray-800">
+            5
+        </div>
+
+        <div class="text-xs text-gray-400 mt-1">
+            Data sementara
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Panel Menu Admin -->
+<div class="bg-white rounded-xl shadow-sm border p-6">
+
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">
+        Menu Admin
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="admin-menu-item border rounded-lg p-4 hover:bg-blue-50 cursor-pointer">
+
+            <div class="font-medium text-gray-800">
+                Kelola Pegawai
+            </div>
+
+            <div class="text-sm text-gray-500 mt-1">
+                Tambah, ubah, dan hapus data pegawai
+            </div>
+
+        </div>
+
+        <div class="admin-menu-item border rounded-lg p-4 hover:bg-blue-50 cursor-pointer">
+
+            <div class="font-medium text-gray-800">
+                Kelola Role
+            </div>
+
+            <div class="text-sm text-gray-500 mt-1">
+                Atur role admin dan pegawai
+            </div>
+
+        </div>
+
+        <div class="admin-menu-item border rounded-lg p-4 hover:bg-blue-50 cursor-pointer">
+
+            <div class="font-medium text-gray-800">
+                Kelola Permission
+            </div>
+
+            <div class="text-sm text-gray-500 mt-1">
+                Atur hak akses tiap role
+            </div>
+
+        </div>
+
+        <div class="admin-menu-item border rounded-lg p-4 hover:bg-blue-50 cursor-pointer">
+
+            <div class="font-medium text-gray-800">
+                Data Barang
+            </div>
+
+            <div class="text-sm text-gray-500 mt-1">
+                Kelola data barang logistik
+            </div>
+
+        </div>
+
+        <div class="admin-menu-item border rounded-lg p-4 hover:bg-blue-50 cursor-pointer">
+
+            <div class="font-medium text-gray-800">
+                Laporan
+            </div>
+
+            <div class="text-sm text-gray-500 mt-1">
+                Lihat laporan aktivitas
+            </div>
+
+        </div>
+
+        <div class="admin-menu-item border rounded-lg p-4 hover:bg-blue-50 cursor-pointer">
+
+            <div class="font-medium text-gray-800">
+                Pengaturan
+            </div>
+
+            <div class="text-sm text-gray-500 mt-1">
+                Konfigurasi sistem
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
