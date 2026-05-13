@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Sistem Logistik</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Basecoat -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.2/dist/basecoat.min.css"
+        rel="stylesheet"
+    >
+</head>
+
+<body 
+    class="min-h-screen bg-cover bg-center"
+    style="background-image: url('/images/fti.jpg');"
+>
+
+    <!-- Overlay -->
+    <div class="min-h-screen bg-black/50 flex items-center justify-center px-6">
+
+        <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl w-full">
+
+            <!-- Text Kiri -->
+            <div class="text-white">
+
+                <h1 class="text-5xl font-bold mb-4">
+                    Sistem Logistik
+                </h1>
+
+                <p class="text-lg text-gray-200 leading-relaxed">
+                    Sistem informasi logistik Fakultas Teknologi Informasi.
+                    Silakan login untuk mengakses dashboard sesuai hak akses pengguna.
+                </p>
+
+            </div>
+
+            <!-- Card Login -->
+            <div class="bg-white rounded-2xl shadow-2xl p-8">
+
+                <h2 class="text-3xl font-bold text-center mb-6">
+                    Login
+                </h2>
+
+                <form action="/login" method="POST">
+
+                    <div class="mb-4">
+
+                        <label class="block mb-2 font-medium">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Masukkan email"
+                            class="input w-full"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="mb-6">
+
+                        <label class="block mb-2 font-medium">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Masukkan password"
+                            class="input w-full"
+                            required
+                        >
+
+                    </div>
+
+                    <button class="btn btn-primary w-full">
+                        Login
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
