@@ -60,3 +60,49 @@ CREATE TABLE model_has_permissions (
     REFERENCES permissions(id)
     ON DELETE CASCADE
 );
+
+
+// Tabel untuk menyimpan data admin
+
+-- ROLE DEFAULT
+
+INSERT INTO roles (name, guard_name)
+VALUES
+('admin', 'web'),
+('pegawai', 'web');
+
+
+-- USER ADMIN DEFAULT
+
+INSERT INTO users (nama, email, password)
+VALUES (
+    'Administrator',
+    'admin@gmail.com',
+    '$2b$10$lkt6LoO2h4YVfMyzgVp7GO99jrtT1Q7XJSuxypEepj4ZuPASJzXWW'
+);
+
+-- ROLE ADMIN
+
+INSERT INTO model_has_roles (role_id, model_type, model_id)
+VALUES (
+    1,
+    'User',
+    1
+);
+
+
+/// Tabel untuk menyimpan data pegawai
+
+INSERT INTO users (nama, email, password)
+VALUES (
+    'Pegawai',
+    'pegawai@gmail.com',
+    '$2b$10$BA1IpGMl8kH3ldPqbQr3Y.2l0h3bby4lv/Y/UKIFwRiBTwwy1tbZe'
+);
+
+INSERT INTO model_has_roles (role_id, model_type, model_id)
+VALUES (
+    2,
+    'User',
+    2
+);

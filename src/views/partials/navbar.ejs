@@ -1,47 +1,99 @@
-<%# partials/_navbar.ejs — Navigasi utama (shared untuk semua role) %>
-<%# Author: Mahasiswa 3 - Taris Rafivdean %>
+<nav class="bg-white border-b shadow-sm sticky top-0 z-10">
 
-<nav class="navbar">
-    <div class="navbar-brand">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8m-9 4h4"/>
-        </svg>
-        Sistem Logistik
-    </div>
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
-    <div class="navbar-menu">
-        <% if (user && user.role === 'admin') { %>
-            <a href="/admin" class="navbar-item <%= activePage === 'dashboard' ? 'active' : '' %>">
-                Dashboard
-            </a>
-        <% } %>
+        <!-- Logo -->
+        <a href="/<%= user && user.role ? user.role : '' %>" class="flex items-center gap-3">
 
-        <% if (user && user.role === 'pegawai') { %>
-            <a href="/pegawai" class="navbar-item <%= activePage === 'dashboard' ? 'active' : '' %>">
-                Dashboard
-            </a>
-        <% } %>
-    </div>
-
-    <div class="navbar-end">
-        <% if (user) { %>
-            <div class="navbar-user">
-                <div class="navbar-avatar">
-                    <%= user.nama ? user.nama.charAt(0).toUpperCase() : 'U' %>
-                </div>
-                <div class="navbar-user-info">
-                    <span class="navbar-user-name"><%= user.nama %></span>
-                    <span class="navbar-user-role badge badge-<%= user.role === 'admin' ? 'admin' : 'pegawai' %>">
-                        <%= user.role %>
-                    </span>
-                </div>
+            <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
+                SL
             </div>
-            <a href="/logout" class="navbar-logout" onclick="return confirm('Yakin ingin logout?')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
-                </svg>
-                Logout
-            </a>
+
+            <div>
+
+                <div class="font-semibold text-gray-800 leading-tight">
+                    Sistem Logistik
+                </div>
+
+                <div class="text-xs text-gray-500 leading-tight">
+                    Fakultas Teknologi Informasi
+                </div>
+
+            </div>
+
+        </a>
+
+        <!-- Menu -->
+        <div class="flex items-center gap-4">
+
+            <% if (user && user.role === 'admin') { %>
+
+                <a
+                    href="/admin"
+                    class="text-sm font-medium px-3 py-2 rounded-lg transition
+                    <%= activePage === 'dashboard'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-600 hover:bg-gray-100' %>"
+                >
+                    Dashboard
+                </a>
+
+            <% } %>
+
+            <% if (user && user.role === 'pegawai') { %>
+
+                <a
+                    href="/pegawai"
+                    class="text-sm font-medium px-3 py-2 rounded-lg transition
+                    <%= activePage === 'dashboard'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-600 hover:bg-gray-100' %>"
+                >
+                    Dashboard
+                </a>
+
+            <% } %>
+
+        </div>
+
+        <!-- User -->
+        <% if (user) { %>
+
+            <div class="flex items-center gap-4">
+
+                <!-- Info -->
+                <div class="text-right hidden sm:block">
+
+                    <div class="text-sm font-medium text-gray-800">
+                        <%= user.nama %>
+                    </div>
+
+                    <div class="text-xs text-gray-500 capitalize">
+                        <%= user.role %>
+                    </div>
+
+                </div>
+
+                <!-- Avatar -->
+                <div class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-700">
+
+                    <%= user.nama ? user.nama.charAt(0).toUpperCase() : 'U' %>
+
+                </div>
+
+                <!-- Logout -->
+                <a
+                    href="/logout"
+                    onclick="return confirm('Yakin ingin logout?')"
+                    class="btn btn-outline text-sm"
+                >
+                    Logout
+                </a>
+
+            </div>
+
         <% } %>
+
     </div>
+
 </nav>
