@@ -2,7 +2,7 @@
 
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
-        <!-- Logo / Brand -->
+        <!-- Logo -->
         <a href="/<%= user && user.role ? user.role : '' %>" class="flex items-center gap-3">
 
             <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
@@ -10,22 +10,58 @@
             </div>
 
             <div>
+
                 <div class="font-semibold text-gray-800 leading-tight">
                     Sistem Logistik
                 </div>
+
                 <div class="text-xs text-gray-500 leading-tight">
                     Fakultas Teknologi Informasi
                 </div>
+
             </div>
 
         </a>
 
-        <!-- Menu kanan -->
+        <!-- Menu -->
+        <div class="flex items-center gap-4">
+
+            <% if (user && user.role === 'admin') { %>
+
+                <a
+                    href="/admin"
+                    class="text-sm font-medium px-3 py-2 rounded-lg transition
+                    <%= activePage === 'dashboard'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-600 hover:bg-gray-100' %>"
+                >
+                    Dashboard
+                </a>
+
+            <% } %>
+
+            <% if (user && user.role === 'pegawai') { %>
+
+                <a
+                    href="/pegawai"
+                    class="text-sm font-medium px-3 py-2 rounded-lg transition
+                    <%= activePage === 'dashboard'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-600 hover:bg-gray-100' %>"
+                >
+                    Dashboard
+                </a>
+
+            <% } %>
+
+        </div>
+
+        <!-- User -->
         <% if (user) { %>
 
             <div class="flex items-center gap-4">
 
-                <!-- Info user -->
+                <!-- Info -->
                 <div class="text-right hidden sm:block">
 
                     <div class="text-sm font-medium text-gray-800">
@@ -38,13 +74,19 @@
 
                 </div>
 
-                <!-- Avatar bulat -->
+                <!-- Avatar -->
                 <div class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-700">
+
                     <%= user.nama ? user.nama.charAt(0).toUpperCase() : 'U' %>
+
                 </div>
 
-                <!-- Tombol logout -->
-                <a href="/logout" class="btn btn-outline text-sm">
+                <!-- Logout -->
+                <a
+                    href="/logout"
+                    onclick="return confirm('Yakin ingin logout?')"
+                    class="btn btn-outline text-sm"
+                >
                     Logout
                 </a>
 
