@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Halaman Tidak Ditemukan | Sistem Logistik</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Basecoat UI -->
+    <link href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.2/dist/basecoat.min.css" rel="stylesheet">
+
+    <!-- CSS Pegawai (shared styles) -->
+    <link rel="stylesheet" href="/css/pegawai.css">
+</head>
+<body class="app-body error-page-body">
+
+    <!-- Navbar (jika user sudah login) -->
+    <% if (locals.user) { %>
+        <%- include('../partials/navbar', { user: user, activePage: '' }) %>
+    <% } %>
+
+    <main class="error-page">
+        <div class="error-container">
+
+            <!-- Ilustrasi angka error -->
+            <div class="error-code error-code-404">404</div>
+
+            <div class="error-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+            </div>
+
+            <h1 class="error-title">Halaman Tidak Ditemukan</h1>
+
+            <p class="error-message">
+                Maaf, halaman yang Anda cari tidak tersedia atau telah dipindahkan.
+                Silakan kembali ke dashboard atau halaman sebelumnya.
+            </p>
+
+            <div class="error-actions">
+                <% if (locals.user && user.role === 'admin') { %>
+                    <a href="/admin" class="btn btn-primary">Kembali ke Dashboard Admin</a>
+                <% } else if (locals.user && user.role === 'pegawai') { %>
+                    <a href="/pegawai" class="btn btn-primary">Kembali ke Dashboard Pegawai</a>
+                <% } else { %>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                <% } %>
+                <a href="javascript:history.back()" class="btn btn-outline">Kembali</a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

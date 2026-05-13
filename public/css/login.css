@@ -1,0 +1,62 @@
+    .alert-error {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: #FCEBEB;
+            border: 1px solid #F09595;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 1.25rem;
+        }
+        .alert-error svg {
+            color: #A32D2D;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .alert-error-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #791F1F;
+            margin-bottom: 2px;
+        }
+        .alert-error-desc {
+            font-size: 13px;
+            color: #A32D2D;
+        }
+        .field-icon {
+            position: relative;
+        }
+        .field-icon svg {
+            position: absolute;
+            left: 11px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            width: 16px;
+            height: 16px;
+        }
+        .field-icon input {
+            padding-left: 36px !important;
+        }
+        .input-error {
+            border-color: #E24B4A !important;
+        }
+        .toggle-pass {
+            position: relative;
+        }
+        .toggle-pass input {
+            padding-right: 40px !important;
+        }
+        .toggle-pass button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: #888;
+            display: flex;
+            align-items: center;
+        }

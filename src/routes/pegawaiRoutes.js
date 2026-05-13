@@ -11,8 +11,11 @@ const pegawaiController = require('../controllers/pegawaiController');
 const authMiddleware = require('../middleware/authMiddleware');
 const { isPegawai } = require('../middleware/permissionMiddleware');
 
+// Semua route pegawai wajib login dan punya role pegawai
+router.use(authMiddleware);
+router.use(isPegawai);
+
 // Dashboard Pegawai
-// Harus login (authMiddleware) DAN harus ber-role pegawai (isPegawai)
-router.get('/pegawai', authMiddleware, isPegawai, pegawaiController.showDashboard);
+router.get('/', pegawaiController.showDashboard);
 
 module.exports = router;

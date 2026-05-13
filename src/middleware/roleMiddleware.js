@@ -1,18 +1,17 @@
 const roleMiddleware = (role) => {
-
     return (req, res, next) => {
-
         if (!req.session.user) {
             return res.redirect('/login');
         }
 
         if (req.session.user.role !== role) {
-            return res.status(403).render('errors/403');
+            return res.status(403).render('errors/403', {
+                user: req.session.user   
+            });
         }
 
         next();
     };
-
 };
 
 module.exports = roleMiddleware;

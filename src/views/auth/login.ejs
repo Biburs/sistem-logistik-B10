@@ -1,96 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="basecoat">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Sistem Logistik</title>
+    <title>Login - Sistem Logistik</title>
 
-    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.2/dist/basecoat.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/login.css">
 
-    <!-- Basecoat -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.2/dist/basecoat.min.css"
-        rel="stylesheet"
-    >
+   
 </head>
 
-<body 
+<body
     class="min-h-screen bg-cover bg-center"
     style="background-image: url('/images/fti.jpg');"
 >
-
-    <!-- Overlay -->
-    <div class="min-h-screen bg-black/50 flex items-center justify-center px-6">
-
+    <div class="min-h-screen bg-black/55 flex items-center justify-center px-6 py-12">
         <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl w-full">
 
-            <!-- Text Kiri -->
+            <!-- Teks Kiri -->
             <div class="text-white">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="bg-white/15 rounded-xl p-2.5">
+                        <!-- Icon package -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                            fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3l9 4.5v9L12 21l-9-4.5v-9L12 3z"/>
+                            <polyline points="12 12 21 7.5"/>
+                            <polyline points="12 12 3 7.5"/>
+                            <line x1="12" y1="12" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <span class="text-white/70 text-sm font-medium tracking-wide uppercase">
+                        FTI Sistem Logistik
+                    </span>
+                </div>
 
-                <h1 class="text-5xl font-bold mb-4">
-                    Sistem Logistik
+                <h1 class="text-4xl font-bold mb-4 leading-tight">
+                    Kelola logistik<br>dengan lebih mudah
                 </h1>
 
-                <p class="text-lg text-gray-200 leading-relaxed">
+                <p class="text-gray-300 leading-relaxed mb-6">
                     Sistem informasi logistik Fakultas Teknologi Informasi.
-                    Silakan login untuk mengakses dashboard sesuai hak akses pengguna.
+                    Login untuk mengakses dashboard sesuai hak akses pengguna.
                 </p>
 
+                <div class="flex items-center gap-2 text-sm text-white/60">
+                    <!-- Icon shield -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <polyline points="9 12 11 14 15 10"/>
+                    </svg>
+                    Sistem dilindungi autentikasi berbasis role
+                </div>
             </div>
 
             <!-- Card Login -->
             <div class="bg-white rounded-2xl shadow-2xl p-8">
 
-                <h2 class="text-3xl font-bold text-center mb-6">
-                    Login
-                </h2>
+                <!-- Header Card -->
+                <div class="text-center mb-6">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <!-- Icon user -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                            fill="none" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900">Selamat datang</h2>
+                    <p class="text-sm text-gray-500 mt-1">Masuk dengan akun terdaftar Anda</p>
+                </div>
 
-                <form action="/login" method="POST">
+                <!-- Alert Error — hanya muncul saat ada error -->
+                <% if (locals.error) { %>
+                <div class="alert-error" role="alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <div>
+                        <p class="alert-error-title">Login gagal</p>
+                        <p class="alert-error-desc"><%= error %></p>
+                    </div>
+                </div>
+                <% } %>
 
-                    <div class="mb-4">
+                <!-- Form -->
+                <form action="/login" method="POST" class="space-y-4">
 
-                        <label class="block mb-2 font-medium">
+                    <!-- Field Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">
                             Email
                         </label>
-
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Masukkan email"
-                            class="input w-full"
-                            required
-                        >
-
+                        <div class="field-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value="<%= locals.oldEmail || '' %>"
+                                placeholder="contoh@email.com"
+                                class="input w-full <%= locals.error ? 'input-error' : '' %>"
+                                required
+                                autofocus
+                            >
+                        </div>
                     </div>
 
-                    <div class="mb-6">
-
-                        <label class="block mb-2 font-medium">
+                    <!-- Field Password -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1.5">
                             Password
                         </label>
-
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Masukkan password"
-                            class="input w-full"
-                            required
-                        >
-
+                        <div class="field-icon toggle-pass">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Masukkan password"
+                                class="input w-full <%= locals.error ? 'input-error' : '' %>"
+                                required
+                            >
+                            <!-- Tombol show/hide password -->
+                            <button
+                                type="button"
+                                onclick="togglePassword()"
+                                aria-label="Tampilkan atau sembunyikan password"
+                            >
+                                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
-                    <button class="btn btn-primary w-full">
-                        Login
+                    <!-- Tombol Login -->
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-full flex items-center justify-center gap-2 mt-2"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                            <polyline points="10 17 15 12 10 7"/>
+                            <line x1="15" y1="12" x2="3" y2="12"/>
+                        </svg>
+                        Masuk ke Sistem
                     </button>
 
                 </form>
 
+                <!-- Footer card -->
+                <div class="border-t border-gray-100 mt-6 pt-4 text-center">
+                    <p class="text-xs text-gray-400">
+                        Hubungi administrator jika mengalami kendala akses
+                    </p>
+                </div>
+
             </div>
-
         </div>
-
     </div>
+
+    <script>
+       function togglePassword() {
+    const input = document.getElementById('password');
+    const icon = document.getElementById('eyeIcon');
+    const isHidden = input.type === 'password';
+
+    input.type = isHidden ? 'text' : 'password';
+
+    icon.innerHTML = isHidden
+        // Password baru ditampilkan → tampilkan icon MATA DICORET (klik lagi untuk sembunyikan)
+        ? `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+           <circle cx="12" cy="12" r="3"/>`
+        // Password tersembunyi → tampilkan icon MATA TERBUKA (klik untuk tampilkan)
+        : `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+             <line x1="1" y1="1" x2="23" y2="23"/>`;
+}
+    </script>
 
 </body>
 </html>
