@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title || 'Sistem Logistik' %> | FTI Logistik</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Basecoat UI -->
+    <link href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.2/dist/basecoat.min.css" rel="stylesheet">
+
+    <!-- CSS Pegawai (custom) -->
+    <link rel="stylesheet" href="/css/pegawai.css">
+</head>
+<body class="app-body">
+
+    <%- include('../partials/navbar', { user: locals.user, activePage: locals.activePage || '' }) %>
+
+    <main class="app-main">
+        <%- include('../partials/flash') %>
+        <%- body %>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2025 FTI Logistik &mdash; Sistem Manajemen Transaksi Checkout</p>
+    </footer>
+
+</body>
+</html>

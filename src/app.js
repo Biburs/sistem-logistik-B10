@@ -7,6 +7,7 @@ const path = require('path');
 const app = express();
 
 const indexRoutes = require('./routes/index');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 
 // View Engine EJS
@@ -23,11 +24,16 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // Session
 app.use(session({
-    secret: 'secretlogistik',
+    secret: process.env.SESSION_SECRET || 'secretlogistik',
     resave: false,
     saveUninitialized: true
 }));
 
+// Routes
 app.use('/', indexRoutes);
+
+// Error Handlers (harus paling akhir)
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;

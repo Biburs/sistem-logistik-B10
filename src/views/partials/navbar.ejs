@@ -1,0 +1,47 @@
+<%# partials/_navbar.ejs — Navigasi utama (shared untuk semua role) %>
+<%# Author: Mahasiswa 3 - Taris Rafivdean %>
+
+<nav class="navbar">
+    <div class="navbar-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8m-9 4h4"/>
+        </svg>
+        Sistem Logistik
+    </div>
+
+    <div class="navbar-menu">
+        <% if (user && user.role === 'admin') { %>
+            <a href="/admin" class="navbar-item <%= activePage === 'dashboard' ? 'active' : '' %>">
+                Dashboard
+            </a>
+        <% } %>
+
+        <% if (user && user.role === 'pegawai') { %>
+            <a href="/pegawai" class="navbar-item <%= activePage === 'dashboard' ? 'active' : '' %>">
+                Dashboard
+            </a>
+        <% } %>
+    </div>
+
+    <div class="navbar-end">
+        <% if (user) { %>
+            <div class="navbar-user">
+                <div class="navbar-avatar">
+                    <%= user.nama ? user.nama.charAt(0).toUpperCase() : 'U' %>
+                </div>
+                <div class="navbar-user-info">
+                    <span class="navbar-user-name"><%= user.nama %></span>
+                    <span class="navbar-user-role badge badge-<%= user.role === 'admin' ? 'admin' : 'pegawai' %>">
+                        <%= user.role %>
+                    </span>
+                </div>
+            </div>
+            <a href="/logout" class="navbar-logout" onclick="return confirm('Yakin ingin logout?')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+                </svg>
+                Logout
+            </a>
+        <% } %>
+    </div>
+</nav>
